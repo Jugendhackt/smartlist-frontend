@@ -1,5 +1,22 @@
-function removeElement(elment) {
-elment.parentNode.removeChild(elment);
+var home = true;
+
+
+function toggle(className, displayState){
+  console.log("hidden1");
+    var elements = document.getElementsByClassName(className);
+    for (var i = 0; i < elements.length; i++){
+        elements[i].style.visibility = displayState;
+    }
+}
+
+function showhome() {
+  console.log("Home Update");
+  if(!home)  toggle('additem', 'visible');
+  if(home)toggle('additem', 'hidden');
+}
+
+function removeElement(element) {
+elment.parentNode.removeChild(element);
 }
 
 function add() {
@@ -39,6 +56,8 @@ let request = new XMLHttpRequest();
 }
 
 function loadEntries(website) {
+  home = false;
+showhome();
 let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

@@ -26,4 +26,5 @@ div.login{
 .additem {
 	color: white;
 	left: 3vw;
+	visibility: hidden;
 }
