@@ -51,13 +51,13 @@ let request = new XMLHttpRequest();
 }
 
 function emptyList(){
-	var ul = document.getElementById("overview");
+	var ul = document.getElementsByClassName("overview")[0];
 	while (ul.firstChild) {
     		ul.removeChild(ul.firstChild);
 }}
 
 function addlistItem(Text, send, isEntry) {
-	var ul = document.getElementById("overview");
+	var ul = document.getElementsByClassName("overview")[0];
 	 var list = document.createElement("LI");
     var textelement = document.createTextNode(Text);
 
