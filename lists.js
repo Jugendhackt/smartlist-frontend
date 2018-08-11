@@ -73,6 +73,7 @@ function addlistItem(Text, send, isEntry) {
 	    });
 	}else{
 	    list.addEventListener('click', function(e) {
+	    setTitle(list.innerText)
 	    emptyList()
        	    loadEntries("http://192.168.21.160:3000/lists/"+list.id);
 	});
@@ -80,5 +81,12 @@ function addlistItem(Text, send, isEntry) {
 	
     if(send)sendRequest("http://192.168.21.160:3000/lists/0/entries/add", Text, list, "POST");
 	return list;
+}
+
+function setTitle(title){
+
+e=document.getElementById("title");
+e.innerHTML=title;
+
 }
 
