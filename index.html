@@ -4,9 +4,9 @@
 	<link href="style.css" rel="stylesheet">
 	<title>Smartlist Frontend</title>
 </head>
-<body>
+<body onload="loadLists('http://192.168.21.160:3000/user/lists');">
 	<script type="text/javascript" src="lists.js"></script>
-	<header><h1 onclick=" addlistItem(prompt('Please enter the Item'))" class="header">Add Item</h1></header>
+	<header><h1 onclick=" addlistItem(prompt('Please enter the Item'),true,true)" class="header">Add Item</h1></header>
 	
 	<div class="list">
 		<h2 id="title">title</h2>	
