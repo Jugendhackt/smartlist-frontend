@@ -3,7 +3,7 @@ var listID = -1;
 
 function homeUpdate() {
   document.getElementById("back").style.display = home ? "none" : "";
-  document.getElementsByClassName(className)[0].style.display = home ? "none" : "";
+  document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
 }
 
 function removeElement(element) {
