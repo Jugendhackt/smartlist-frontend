@@ -3,7 +3,7 @@
     padding: 0;
     outline: 0;
     font-size: 30px;
-    background-color: #d7d7d7
+    background-color: #ebebeb
 }
 
 header {
@@ -14,7 +14,21 @@ header {
 
 ul{
 	position: relative;
-	left: 10vw;
+	left: 5vw;
+	
+	padding-left:5%;
+	padding-right:5%;
+
+	background-color:white;
+	border-width:1px;
+	border-color:#e1e1e1;
+	border-style:solid;
+	border-radius:5px
+
+}
+
+li{
+	background-color:white;
 }
 
 div.login{
