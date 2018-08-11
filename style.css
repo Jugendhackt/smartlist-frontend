@@ -11,3 +11,10 @@ header {
 	background-color: #db3530;
 }
 
+
+div.login{
+	padding-left:30%;	
+	width:40%;
+	height:50%;
+	margin-top:30%;
+}
