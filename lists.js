@@ -2,8 +2,8 @@ var home = true;
 var listID = -1;
 
 function homeUpdate() {
-  document.getElementById("back").style.display = home ? "none" : "";
-  document.getElementsByClassName("additem")[0].style.visibility = home ? "hidden" : "visible";
+  document.getElementById("back").style.visibility = home ? "hidden" : "visible";
+  document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
 }
 
 function removeElement(element) {

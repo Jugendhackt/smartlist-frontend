@@ -3,16 +3,28 @@
     padding: 0;
     outline: 0;
     font-size: 30px;
-    background-color: #ebebeb
+}
+
+body {
+	background-color: #ebebeb;
 }
 
 header {
 	width: 100vw;
-	height:  40px;
+	min-height: 30px;
 	background-color: #db3530;
 }
 
-ul{
+header h1 {
+	color: white;
+	padding: 10px 10px;
+}
+
+#title {
+	padding: 10px 0px;
+}
+
+ul {
 	position: relative;
 	left: 5vw;
 	
@@ -23,35 +35,36 @@ ul{
 	border-width:1px;
 	border-color:#e1e1e1;
 	border-style:solid;
-	border-radius:5px
-
+	border-radius:5px;
 }
 
-li{
+li {
 	background-color:white;
 }
 
-div.login{
+main {
+	margin-top: 10px;
+}
+
+div.login {
 	padding-left:30%;	
 	width:40%;
 	height:50%;
 	margin-top:30%;
 }
 
-.additem {
-	background-color:#00000000;
-	color: white;
-	left: 3vw;
-	visibility: hidden;
-}
-
 #back {
 	width: fit-content;
 }
 
-#add{
+#back, .overview li {
+	cursor: pointer;
 }
 
 #back, #title {
 	display: inline;	
+}
+
+.additem {
+	display: inline;
 }
