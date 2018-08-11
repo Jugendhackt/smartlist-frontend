@@ -2,17 +2,23 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    font-size: 30px;
+    font-size: 22pt;
 }
 
-body {
+html, body {
+	height:100%;
+}
+body{
 	background-color: #ebebeb;
+	display:flex;
+	flex-direction:column;
 }
 
 header {
-	width: 100vw;
-	min-height: 30px;
+	width: 100%;
+	min-height: 20pt;
 	background-color: #db3530;
+	flex-shrink: 0;
 }
 
 header h1 {
@@ -43,15 +49,10 @@ li {
 }
 
 main {
+	flex-grow:1;
 	margin-top: 10px;
 }
 
-div.login {
-	padding-left:30%;	
-	width:40%;
-	height:50%;
-	margin-top:30%;
-}
 
 #back {
 	width: fit-content;
@@ -61,10 +62,13 @@ div.login {
 	cursor: pointer;
 }
 
-#back, #title {
+#back, #title, .additem{
 	display: inline;	
 }
 
-.additem {
-	display: inline;
+footer p{
+	font-size:12pt;
+}
+footer{
+	margin-top:10px;
 }
