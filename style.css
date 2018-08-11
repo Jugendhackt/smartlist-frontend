@@ -30,9 +30,8 @@ header h1 {
 }
 
 ul {
-	
-	padding-left:50px;
-	padding-right:50px;
+	margin:0 36px;
+	padding: 10px;
 
 	background-color:white;
 	border-width:1px;
@@ -42,6 +41,7 @@ ul {
 }
 
 li {
+	list-style: none;
 	background-color:white;
 }
 
@@ -50,9 +50,8 @@ main {
 	margin-top: 10px;
 }
 
-
 #back {
-	width: fit-content;
+	width: 50px;
 }
 
 #back, .overview li {
