@@ -1,9 +1,14 @@
 var home = true;
+var serverIp = "http://192.168.137.132:3000";
 var listID = -1;
 
 function homeUpdate() {
   document.getElementById("back").style.visibility = home ? "hidden" : "visible";
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
+}
+
+function serverping() {
+
 }
 
 function removeElement(element) {
@@ -15,7 +20,7 @@ function add() {
   if(t) addlistItem(t,true,true);
 }
 
-function sendRequest(website, Text, element, methode) {
+function sendRequest(website, Text, element, methode, category) {
   let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -52,7 +57,7 @@ function back() {
   homeUpdate();
   emptyList();
   setTitle("Übersicht");
-  loadLists('http://192.168.21.160:3000/user/lists');
+  loadLists(serverIp+'/user/lists');
 }
 
 function loadEntries(website) {
@@ -90,7 +95,7 @@ function addlistItem(Text, send, isEntry) {
       var t = prompt('Please enter the Item', list.textContent);
           if(t) {
             list.textContent = t;
-            sendRequest("http://192.168.21.160:3000/lists/"+listID+"/entries/"+list.id+"/edit", list.textContent, null, "PUT");
+            sendRequest(serverIp+"/lists/"+listID+"/entries/"+list.id+"/edit", list.textContent, null, "PUT");
           }else if(t !== null){
             removeElement(list);
             }
@@ -99,12 +104,12 @@ function addlistItem(Text, send, isEntry) {
     list.addEventListener('click', function(e) {
       setTitle(list.innerText)
       emptyList()
-      loadEntries("http://192.168.21.160:3000/lists/"+list.id);
+      loadEntries(serverIp+"/lists/"+list.id);
       listID = list.id;
     });
   }
   
-  if(send) sendRequest("http://192.168.21.160:3000/lists/"+listID+"/entries/add", Text, list, "POST");
+  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", Text, list, "POST");
   return list;
 }
 
