@@ -1,4 +1,5 @@
 var home = true;
+var listID = -1;
 
 
 function toggle(className, displayState){
@@ -16,7 +17,7 @@ function showhome() {
 }
 
 function removeElement(element) {
-elment.parentNode.removeChild(element);
+  element.parentNode.removeChild(element);
 }
 
 function add() {
@@ -90,7 +91,7 @@ function addlistItem(Text, send, isEntry) {
 	    var t = prompt('Please enter the Item', list.textContent);
     	    if(t) {
     	      list.textContent = t;
-      	    sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", list.textContent, null, "PUT");
+      	    sendRequest("http://192.168.21.160:3000/lists/"+listID+"/entries/"+list.id+"/edit", list.textContent, null, "PUT");
           }else if(t !== null){
             console.log("Bool");
             removeElement(list);
@@ -98,12 +99,21 @@ function addlistItem(Text, send, isEntry) {
 	    });
 	}else{
 	    list.addEventListener('click', function(e) {
+	    setTitle(list.innerText)
 	    emptyList()
        	    loadEntries("http://192.168.21.160:3000/lists/"+list.id);
+        listID = list.id;
 	});
 	}
 	
-    if(send)sendRequest("http://192.168.21.160:3000/lists/0/entries/add", Text, list, "POST");
+    if(send)sendRequest("http://192.168.21.160:3000/lists/"+listID+"/entries/add", Text, list, "POST");
 	return list;
+}
+
+function setTitle(title){
+
+e=document.getElementById("title");
+e.innerHTML=title;
+
 }
 
