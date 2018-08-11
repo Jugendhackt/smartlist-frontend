@@ -11,17 +11,27 @@ function makeid() {
   return text;
 }
 
+function addrequest(Text) {
+return makeid();
+}
 
-function addlistItem(Text, edit, id) {
+function changerequest(Text) {
+	
+}
+
+function addlistItem(Text, edit) {
 	if(edit != true && edit != false) edit = false;
 	 var list = document.createElement("LI");
-	 list.contentEditable  = edit;
     var textelement = document.createTextNode(Text);
-    list.id = makeid();
 
     list.appendChild(textelement);
     ul.appendChild(list);
     list.addEventListener('click', function(e) {
-    list.textContent = prompt('Please enter the Item');
+    	list.textContent = prompt('Please enter the Item', list.textContent);
  });
+    if(!edit) {
+    list.id = addrequest(Text);
+    }else{
+    	changerequest();
+    } 
 }
