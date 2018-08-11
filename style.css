@@ -72,6 +72,7 @@ footer{
 }
 
 #conerror{
+	visibility: hidden;
 	position: fixed;
 	left: 0vw;
 	top: 0vw;

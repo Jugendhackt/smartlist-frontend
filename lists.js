@@ -1,5 +1,5 @@
 var home = true;
-var serverIp = "http://192.1w68.137.132:3000";
+var serverIp = "http://192.168.137.132:3000";
 var listID = -1;
 
 function homeUpdate() {
@@ -7,9 +7,7 @@ function homeUpdate() {
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
 }
 
-function serverping() {
 
-}
 
 function removeElement(element) {
   element.parentNode.removeChild(element);
@@ -46,8 +44,6 @@ let request = new XMLHttpRequest();
       emptyList();
       for(let list of json.lists)
         addlistItem(list.title,false,false).id=list.id;
-    }else{
-      serverping();
     }
   };
   request.open("GET", website, true);
