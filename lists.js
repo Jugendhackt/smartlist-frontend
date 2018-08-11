@@ -40,6 +40,12 @@ let request = new XMLHttpRequest();
   request.send();
 }
 
+function back() {
+  emptyList();
+  setTitle("Übersicht");
+  loadLists('http://192.168.21.160:3000/user/lists');
+}
+
 function loadEntries(website) {
 let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
@@ -93,9 +99,7 @@ function addlistItem(Text, send, isEntry) {
 }
 
 function setTitle(title){
-
-e=document.getElementById("title");
-e.innerHTML=title;
-
+  e = document.getElementById("title");
+  e.innerHTML=title;
 }
 

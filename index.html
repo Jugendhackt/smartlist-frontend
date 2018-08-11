@@ -4,12 +4,12 @@
 	<link href="style.css" rel="stylesheet">
 	<title>Smartlist Frontend</title>
 </head>
-<body onload="loadLists('http://192.168.21.160:3000/user/lists');">
+<body onload="back();">
 	<script type="text/javascript" src="lists.js"></script>
 	<header><h1 onclick="add()" class="additem">Add Item</h1></header>
 	
 	<div class="list">
-		<h2 id="title">title</h2>	
+		<p id="back" onclick="back();"><b>↩&nbsp;</b></p><h2 id="title">title</h2>	
 		<ul style="width:100px" class="overview"></ul>
 	</div>
 </body>
