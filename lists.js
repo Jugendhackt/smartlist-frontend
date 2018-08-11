@@ -9,8 +9,9 @@ function toggle(className, displayState){
     }
 }
 
-function showhome() {
+function homeUpdate() {
   console.log("Home Update");
+  document.getElementById("back").style.display = home ? "none" : "";
   if(!home)  toggle('additem', 'visible');
   if(home)toggle('additem', 'hidden');
 }
@@ -59,7 +60,7 @@ let request = new XMLHttpRequest();
 
 function back() {
   home = true;
-  showhome();
+  homeUpdate();
   emptyList();
   setTitle("Übersicht");
   loadLists('http://192.168.21.160:3000/user/lists');
@@ -67,7 +68,7 @@ function back() {
 
 function loadEntries(website) {
   home = false;
-  showhome();
+  homeUpdate();
   let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
