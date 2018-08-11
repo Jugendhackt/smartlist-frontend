@@ -1,13 +1,18 @@
 
+function add() {
+	var t = prompt('Please enter the Item');
+	if(t) addlistItem(t,true,true);
+}
 function sendRequest(website, Text, element, methode) {
 let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     	json = this.responseText;
     	json = JSON.parse(json);
-    	console.log(json);
-    	console.log(json["id"]);
-      element.id = json["id"];
+    	if(element !== null) {
+      	element.id = json.id;
+      	element.textContent = json.entry.text;
+	}
     }
   };
   request.open(methode, website, true);
@@ -60,9 +65,12 @@ function addlistItem(Text, send, isEntry) {
     ul.appendChild(list);
 	if(isEntry){
 	    list.addEventListener('click', function(e) {
-	    list.textContent = prompt('Please enter the Item', list.textContent);
-       	    sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", list.textContent, list, "PUT");
-    	});
+	    var t = prompt('Please enter the Item', list.textContent);
+    	    if(t) {
+    	    list.textContent = t;
+      	    sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", list.textContent, null, "PUT");
+            }
+	    });
 	}else{
 	    list.addEventListener('click', function(e) {
 	    emptyList()
