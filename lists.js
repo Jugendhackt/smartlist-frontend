@@ -1,19 +1,10 @@
 var home = true;
 var listID = -1;
 
-function toggle(className, displayState){
-  console.log("hidden1");
-    var elements = document.getElementsByClassName(className);
-    for (var i = 0; i < elements.length; i++){
-        elements[i].style.visibility = displayState;
-    }
-}
-
 function homeUpdate() {
   console.log("Home Update");
   document.getElementById("back").style.display = home ? "none" : "";
-  if(!home)  toggle('additem', 'visible');
-  if(home)toggle('additem', 'hidden');
+  document.getElementsByClassName(className)[0].style.display = home ? "none" : "";
 }
 
 function removeElement(element) {
