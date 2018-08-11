@@ -2,7 +2,6 @@ var home = true;
 var listID = -1;
 
 function toggle(className, displayState){
-  console.log("hidden1");
     var elements = document.getElementsByClassName(className);
     for (var i = 0; i < elements.length; i++){
         elements[i].style.visibility = displayState;
@@ -10,7 +9,6 @@ function toggle(className, displayState){
 }
 
 function homeUpdate() {
-  console.log("Home Update");
   document.getElementById("back").style.display = home ? "none" : "";
   if(!home)  toggle('additem', 'visible');
   if(home)toggle('additem', 'hidden');
@@ -48,7 +46,6 @@ let request = new XMLHttpRequest();
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
       json = JSON.parse(json);
-      console.log(json);
       emptyList();
       for(let list of json.lists)
         addlistItem(list.title,false,false).id=list.id;
@@ -74,7 +71,6 @@ function loadEntries(website) {
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
       json = JSON.parse(json);
-      console.log(json);
       emptyList();
       for(let entry of json.entries)
         addlistItem(entry.text,false,true).id=entry.id;
@@ -104,7 +100,6 @@ function addlistItem(Text, send, isEntry) {
             list.textContent = t;
             sendRequest("http://192.168.21.160:3000/lists/"+listID+"/entries/"+list.id+"/edit", list.textContent, null, "PUT");
           }else if(t !== null){
-            console.log("Bool");
             removeElement(list);
             }
       });
