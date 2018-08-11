@@ -1,3 +1,6 @@
+function removeElement(elment) {
+elment.parentNode.removeChild(elment);
+}
 
 function add() {
 	var t = prompt('Please enter the Item');
@@ -67,8 +70,11 @@ function addlistItem(Text, send, isEntry) {
 	    list.addEventListener('click', function(e) {
 	    var t = prompt('Please enter the Item', list.textContent);
     	    if(t) {
-    	    list.textContent = t;
+    	      list.textContent = t;
       	    sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", list.textContent, null, "PUT");
+          }else if(t !== null){
+            console.log("Bool");
+            removeElement(list);
             }
 	    });
 	}else{
