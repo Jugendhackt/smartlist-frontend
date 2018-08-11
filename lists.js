@@ -26,7 +26,7 @@ let request = new XMLHttpRequest();
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify({text:Text, category:"Der Himmel ist Blau .ung if bim schlau"}));
+  request.send(JSON.stringify({entry:{text:Text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
 }
 
 
@@ -39,7 +39,7 @@ function addlistItem(Text) {
     ul.appendChild(list);
     list.addEventListener('click', function(e) {
     	list.textContent = prompt('Please enter the Item', list.textContent);
-    	sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", Text, list, "PUT");
+    	sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", list.textContent, list, "PUT");
     });
     sendRequest("http://192.168.21.160:3000/lists/0/entries/add", Text, list, "POST");
 }
