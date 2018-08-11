@@ -120,6 +120,6 @@ function addlistItem(Text, send, isEntry) {
 
 function setTitle(title){
   e = document.getElementById("title");
-  e.innerHTML=title;
+  e.textContent=title;
 }
 
