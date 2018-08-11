@@ -3,7 +3,7 @@
     padding: 0;
     outline: 0;
     font-size: 30px;
-    background-color: #e7e7e7
+    background-color: #ebebeb
 }
 
 header {
@@ -21,9 +21,9 @@ ul{
 
 	background-color:white;
 	border-width:1px;
-	border-color:gray;
+	border-color:#e1e1e1;
 	border-style:solid;
-	border-radius:10px
+	border-radius:5px
 
 }
 
