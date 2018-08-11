@@ -16,7 +16,6 @@ body{
 
 header {
 	width: 100%;
-	min-height: 20pt;
 	background-color: #db3530;
 	flex-shrink: 0;
 }
@@ -31,11 +30,9 @@ header h1 {
 }
 
 ul {
-	position: relative;
-	left: 5vw;
 	
-	padding-left:5%;
-	padding-right:5%;
+	padding-left:50px;
+	padding-right:50px;
 
 	background-color:white;
 	border-width:1px;
