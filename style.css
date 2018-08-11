@@ -28,10 +28,7 @@ div.login{
 	background-color:#00000000;
 	color: white;
 	left: 3vw;
-	transition: color ease 1s;
-}
-.additem:hover{
-	color:black;
+	visibility: hidden;
 }
 
 #back {
