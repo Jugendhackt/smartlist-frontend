@@ -57,6 +57,8 @@ let request = new XMLHttpRequest();
 }
 
 function back() {
+  home = true;
+  showhome();
   emptyList();
   setTitle("Übersicht");
   loadLists('http://192.168.21.160:3000/user/lists');
