@@ -42,8 +42,13 @@ div.login{
 	background-color:#00000000;
 	color: white;
 	left: 3vw;
-    transition: color ease 1s;
+	visibility: hidden;
 }
-.additem:hover{
-color:black;
+
+#back {
+	width: fit-content;
+}
+
+#back, #title {
+	display: inline;	
 }
