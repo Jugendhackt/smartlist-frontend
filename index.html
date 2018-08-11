@@ -5,9 +5,12 @@
 	<title>Smartlist Frontend</title>
 </head>
 <body>
-<header></header>
-	<ul id="overview"></ul>
-		<script type="text/javascript" src="lists.js"></script>
-		<h1 onclick=" addlistItem(prompt('Please enter the Item'), true)">Add Item</h1>
+<header><h1 onclick=" addlistItem(prompt('Please enter the Item'), true)">Add Item</h1></header>
+	<script type="text/javascript" src="lists.js"></script>
+	
+	<div class="list">
+		<h2 id="title">title</h2>	
+		<ul id="overview"></ul>
+	</div>
 </body>
 </html>
