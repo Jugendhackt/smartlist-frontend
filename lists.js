@@ -39,7 +39,7 @@ function addlistItem(Text) {
     ul.appendChild(list);
     list.addEventListener('click', function(e) {
     	list.textContent = prompt('Please enter the Item', list.textContent);
-    	sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", Text, "PUT");
+    	sendRequest("http://192.168.21.160:3000/lists/0/entries/"+list.id+"/edit", Text, list, "PUT");
     });
     sendRequest("http://192.168.21.160:3000/lists/0/entries/add", Text, list, "POST");
 }
