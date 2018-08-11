@@ -5,3 +5,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     outline: 0;
     font-size: 100%;
 }
+
+header {
+	width: 100vw;
+	height:  40px;
+	background-color: #db3530;
+}
+
+#preentry{
+	contenteditable = true;
+	/*visibility: hidden;*/
+	
+}
