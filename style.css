@@ -5,6 +5,7 @@
     font-size: 22pt;
 }
 
+
 html, body {
 	height:100%;
 }
@@ -72,4 +73,21 @@ footer p{
 }
 footer{
 	margin-top:10px;
+}
+
+#conerror{
+	visibility: hidden;
+	position: fixed;
+	left: 0vw;
+	top: 0vw;
+	width: 100vw;
+	height: 100vh;
+	background-color: red;
+	overflow-x: 1;
+}
+#conerrortext{
+	 margin: auto;
+    width: 50%;
+    text-align: center;
+	color: white;
 }

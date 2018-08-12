@@ -7,9 +7,7 @@ function homeUpdate() {
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
 }
 
-function serverping() {
 
-}
 
 function removeElement(element) {
   element.parentNode.removeChild(element);
