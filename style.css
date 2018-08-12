@@ -21,9 +21,14 @@ header {
 	flex-shrink: 0;
 }
 
-header h1 {
-	color: white;
-	padding: 10px 10px;
+#heading {
+	padding: 15px 36px;
+	float: left;
+}
+
+#settings {
+	padding: 12px 36px;
+	float: right;
 }
 
 #title {
