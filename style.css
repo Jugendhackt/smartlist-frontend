@@ -59,6 +59,11 @@ main {
 	width: 50px;
 	cursor: pointer;
 }
+#link{
+	display: inline;
+	font-size: 15px;
+	cursor: pointer;
+}
 
 ul li p {
 	cursor: pointer;

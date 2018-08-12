@@ -1,5 +1,5 @@
 var home = true;
-var serverIp = "http://192.168.21.174:3000";
+var serverIp = "http://192.168.42.67:3000";
 var listID = -1;
 
 function homeUpdate() {
