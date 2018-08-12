@@ -31,7 +31,7 @@ function sendRequest(website, text, element, methode, category) {
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify({entry:{text:text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
+  request.send(JSON.stringify({entry:{text:text, category:"kategorie"}}));
 }
 
 function removeElement(element) {
