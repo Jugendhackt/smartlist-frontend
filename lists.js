@@ -2,6 +2,11 @@ var home = true;
 var serverIp = "http://192.168.21.174:3000";
 var listID = -1;
 
+function changeIp(){
+	var ip = prompt("Please enter the servers ip-adress",serverIp);
+	if(ip)serverIp=ip;
+}
+
 function homeUpdate() {
   document.getElementById("back").style.visibility = home ? "hidden" : "visible";
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
