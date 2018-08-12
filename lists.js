@@ -104,7 +104,7 @@ function addlistItem(text, send, isEntry, category) {
       var t = prompt('Please enter the Item', li.childNodes[6].textContent);
       if(t) {
         li.childNodes[6].innerText = t;
-        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id, li.childNodes[6].textContent, null, "PUT");
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id, li.childNodes[6].textContent, null, "PUT", category);
       } else if(t !== null){
         removeElement(li);
       }
@@ -129,7 +129,7 @@ function addlistItem(text, send, isEntry, category) {
   
   ul.appendChild(li);
 
-  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries", text, li, "POST");
+  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries", text, li, "POST", category);
   return li;
 }
 
