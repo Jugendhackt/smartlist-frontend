@@ -46,7 +46,7 @@ function loadLists(website) {
       json = JSON.parse(json);
       emptyList();
       for(let list of json.lists)
-        addlistItem(list.title,false,false).id=list.id;
+        addlistItem(list.title,false,false, "kategorie").id=list.id;
     }
   };
   request.open("GET", website, true);
@@ -95,7 +95,6 @@ function addlistItem(text, send, isEntry, category) {
   var ul = document.getElementsByClassName("overview")[0];
   var li = document.createElement("li");
 
-
   if(isEntry) {
     li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>&nbsp<p></p>';
     li.childNodes[6].innerText = text;
@@ -105,7 +104,7 @@ function addlistItem(text, send, isEntry, category) {
       var t = prompt('Please enter the Item', li.childNodes[6].textContent);
       if(t) {
         li.childNodes[6].innerText = t;
-        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT");
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT", category);
       } else if(t !== null){
         removeElement(li);
       }
@@ -130,7 +129,7 @@ function addlistItem(text, send, isEntry, category) {
   
   ul.appendChild(li);
 
-  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST");
+  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST", category);
   return li;
 }
 
