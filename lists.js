@@ -4,10 +4,11 @@ var listID = -1;
 
 function changeIp(){
 	var ip = prompt("Please enter the servers ip-adress",serverIp);
-	if(ip)serverIp=ip;
-	loadLists(ip+'/user/lists');
+	if(ip) {
+    serverIp=ip;
+	  loadLists(ip+'/user/lists');
+   }
 }
-
 function homeUpdate() {
   document.getElementById("back").style.visibility = home ? "hidden" : "visible";
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
