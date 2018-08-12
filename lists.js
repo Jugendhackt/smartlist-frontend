@@ -68,7 +68,7 @@ function loadEntries(website) {
       json = JSON.parse(json);
       emptyList();
       for(let entry of json.entries)
-        addlistItem(entry.text,false,true).id=entry.id;
+        addlistItem(entry.text,false,true,entry.category).id=entry.id;
     }
   };
   request.open("GET", website, true);
@@ -81,27 +81,29 @@ function emptyList(){
     ul.removeChild(ul.firstChild);
 }
 
-function addlistItem(text, send, isEntry) {
+function addlistItem(text, send, isEntry, category) {
   var ul = document.getElementsByClassName("overview")[0];
   var li = document.createElement("li");
 
 
   if(isEntry) {
-    li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>';
-    li.childNodes[4].innerText = text;
+    li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>&nbsp<p></p>';
+    li.childNodes[6].innerText = text;
+    li.childNodes[4].innerText=category;
     function edit() {
       console.log(this.parentNode.id);
-      var t = prompt('Please enter the Item', li.childNodes[4].textContent);
+      var t = prompt('Please enter the Item', li.childNodes[6].textContent);
       if(t) {
-        li.childNodes[4].innerText = t;
-        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[4].textContent, null, "PUT");
+        li.childNodes[6].innerText = t;
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT");
       } else if(t !== null){
         removeElement(li);
       }
     }
 
     li.childNodes[0].addEventListener('click', edit);
-    li.childNodes[4].addEventListener('click', edit);
+    li.childNodes[6].addEventListener('click', edit);
+
   } else {
     li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
     li.childNodes[2].innerText = text;
