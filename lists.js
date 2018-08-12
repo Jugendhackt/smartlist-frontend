@@ -22,11 +22,12 @@ function sendRequest(website, text, element, methode, category) {
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
       if(element !== null) {
-      json = JSON.parse(json);
+        json = JSON.parse(json);
         element.id = json.id;
-        element.textContent = json.entry.text;
-          }
-        }
+        element.childNodes[4].textContent = json.entry.category;
+        element.childNodes[6].textContent = json.entry.text;
+      }
+    }
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
