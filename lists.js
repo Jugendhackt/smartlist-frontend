@@ -84,7 +84,7 @@ function emptyList(){
     ul.removeChild(ul.firstChild);
 }
 function  cat(li) {
-  var p = prompt("Please Enter the category");
+  var p = prompt("Please Enter the category", li.childNodes[4].textContent.substring(1, ((li.childNodes[4].textContent.length)-1) ));
   if(p) {
     li.childNodes[4].textContent = "["+p+"]";
    sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id, li.childNodes[6].textContent, null, "PUT", p);
