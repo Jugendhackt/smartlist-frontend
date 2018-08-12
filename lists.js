@@ -9,7 +9,7 @@ function homeUpdate() {
 
 function add() {
   var t = prompt('Please enter the Item');
-  if(t) addlistItem(t,true,true);
+  if(t) addlistItem(t,true,true,"kategorie");
 }
 
 function sendRequest(website, text, element, methode, category) {
@@ -33,13 +33,13 @@ function sendRequest(website, text, element, methode, category) {
 function removeElement(element) {
   if(element) {
     console.log(element);
-  sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
-  element.parentNode.removeChild(element);
-}
+    sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
+    element.parentNode.removeChild(element);
+  }
 }
 
 function loadLists(website) {
-let request = new XMLHttpRequest();
+  let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
