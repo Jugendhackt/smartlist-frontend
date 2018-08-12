@@ -33,7 +33,7 @@ function sendRequest(website, text, element, methode, category) {
 function removeElement(element) {
   if(element) {
     console.log(element);
-    sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
+    sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id, "delete", null,"DELETE");
     element.parentNode.removeChild(element);
   }
 }
@@ -87,7 +87,7 @@ function  cat(li) {
   var p = prompt("Please Enter the category");
   if(p) {
     li.childNodes[4].textContent = "["+p+"]";
-   sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT", p);
+   sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id, li.childNodes[6].textContent, null, "PUT", p);
   }
 }
 
@@ -105,7 +105,7 @@ function addlistItem(text, send, isEntry, category) {
       var t = prompt('Please enter the Item', li.childNodes[6].textContent);
       if(t) {
         li.childNodes[6].innerText = t;
-        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT");
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id, li.childNodes[6].textContent, null, "PUT");
       } else if(t !== null){
         removeElement(li);
       }
@@ -130,7 +130,7 @@ function addlistItem(text, send, isEntry, category) {
   
   ul.appendChild(li);
 
-  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST");
+  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries", text, li, "POST");
   return li;
 }
 
