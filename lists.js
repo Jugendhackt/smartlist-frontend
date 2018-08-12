@@ -20,7 +20,7 @@ function add() {
   if(t) addlistItem(t,true,true);
 }
 
-function sendRequest(website, Text, element, methode, category) {
+function sendRequest(website, text, element, methode, category) {
   let request = new XMLHttpRequest();
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -34,7 +34,7 @@ function sendRequest(website, Text, element, methode, category) {
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify({entry:{text:Text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
+  request.send(JSON.stringify({entry:{text:text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
 }
 
 function loadLists(website) {
@@ -83,34 +83,41 @@ function emptyList(){
     ul.removeChild(ul.firstChild);
 }
 
-function addlistItem(Text, send, isEntry) {
+function addlistItem(text, send, isEntry) {
   var ul = document.getElementsByClassName("overview")[0];
-  var list = document.createElement("LI");
-  var textelement = document.createTextNode(Text);
+  var li = document.createElement("li");
 
-  list.appendChild(textelement);
-  ul.appendChild(list);
-  if(isEntry){
-      list.addEventListener('click', function(e) {
-      var t = prompt('Please enter the Item', list.textContent);
-          if(t) {
-            list.textContent = t;
-            sendRequest(serverIp+"/lists/"+listID+"/entries/"+list.id+"/edit", list.textContent, null, "PUT");
-          }else if(t !== null){
-            removeElement(list);
-            }
-      });
+
+  if(isEntry) {
+    li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p>'+text+'</p>';
+    function edit() {
+      console.log(this.parentNode.id);
+      var t = prompt('Please enter the Item', li.childNodes[4].textContent);
+      if(t) {
+        li.childNodes[4].innerText = t;
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.textContent, null, "PUT");
+      } else if(t !== null){
+        removeElement(li);
+      }
+    }
+
+    li.childNodes[0].addEventListener('click', edit);
+    li.childNodes[4].addEventListener('click', edit);
   } else {
-    list.addEventListener('click', function(e) {
-      setTitle(list.innerText)
+    li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p>'+text+'</p>';
+    function load() {
+      setTitle(li.childNodes[2].innerText)
       emptyList()
-      loadEntries(serverIp+"/lists/"+list.id);
-      listID = list.id;
-    });
+      loadEntries(serverIp+"/lists/"+li.id);
+      listID = li.id;
+    };
+    li.childNodes[0].addEventListener('click', load);
+    li.childNodes[2].addEventListener('click', load);
   }
   
-  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", Text, list, "POST");
-  return list;
+  ul.appendChild(li);
+  if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST");
+  return li;
 }
 
 function setTitle(title){

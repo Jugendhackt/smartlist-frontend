@@ -45,6 +45,10 @@ li {
 	background-color:white;
 }
 
+li p {
+	display: inline;
+}
+
 main {
 	flex-grow:1;
 	margin-top: 10px;
@@ -52,9 +56,10 @@ main {
 
 #back {
 	width: 50px;
+	cursor: pointer;
 }
 
-#back, .overview li {
+ul li p {
 	cursor: pointer;
 }
 
