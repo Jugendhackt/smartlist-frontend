@@ -46,7 +46,7 @@ function loadLists(website) {
       json = JSON.parse(json);
       emptyList();
       for(let list of json.lists)
-        addlistItem(list.title,false,false).id=list.id;
+        addlistItem(list.title,false,false, "kategorie").id=list.id;
     }
   };
   request.open("GET", website, true);
@@ -94,7 +94,6 @@ function  cat(li) {
 function addlistItem(text, send, isEntry, category) {
   var ul = document.getElementsByClassName("overview")[0];
   var li = document.createElement("li");
-
 
   if(isEntry) {
     li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>&nbsp<p></p>';
