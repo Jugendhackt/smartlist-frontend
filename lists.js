@@ -27,7 +27,7 @@ function sendRequest(website, text, element, methode, category) {
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify({entry:{text:text, category:"kategorie"}}));
+  request.send(JSON.stringify({entry:{text:text, category:category}}));
 }
 
 function removeElement(element) {
@@ -83,6 +83,10 @@ function emptyList(){
   while (ul.firstChild)
     ul.removeChild(ul.firstChild);
 }
+function  cat() {
+  var p = prompt("Please Enter the category");
+   sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT", p);
+}
 
 function addlistItem(text, send, isEntry, category) {
   var ul = document.getElementsByClassName("overview")[0];
@@ -105,8 +109,9 @@ function addlistItem(text, send, isEntry, category) {
     }
 
     li.childNodes[0].addEventListener('click', edit);
+        li.childNodes[2].addEventListener('click', function(){removeElement(li)});
+    li.childNodes[4].addEventListener('click', cat);
     li.childNodes[6].addEventListener('click', edit);
-    li.childNodes[2].addEventListener('click', function(){removeElement(li)});
   } else {
     li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
     li.childNodes[2].innerText = text;
