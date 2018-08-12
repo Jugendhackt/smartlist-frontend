@@ -87,13 +87,14 @@ function addlistItem(text, send, isEntry) {
 
 
   if(isEntry) {
-    li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p>'+text+'</p>';
+    li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>';
+    li.childNodes[4].innerText = text;
     function edit() {
       console.log(this.parentNode.id);
       var t = prompt('Please enter the Item', li.childNodes[4].textContent);
       if(t) {
         li.childNodes[4].innerText = t;
-        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.textContent, null, "PUT");
+        sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[4].textContent, null, "PUT");
       } else if(t !== null){
         removeElement(li);
       }
@@ -102,7 +103,8 @@ function addlistItem(text, send, isEntry) {
     li.childNodes[0].addEventListener('click', edit);
     li.childNodes[4].addEventListener('click', edit);
   } else {
-    li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p>'+text+'</p>';
+    li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
+    li.childNodes[2].innerText = text;
     function load() {
       setTitle(li.childNodes[2].innerText)
       emptyList()
