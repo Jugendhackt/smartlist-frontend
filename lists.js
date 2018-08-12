@@ -27,13 +27,13 @@ function sendRequest(website, text, element, methode, category) {
         json = JSON.parse(json);
         element.id = json.id;
         element.childNodes[4].textContent = "["+json.entry.category+"]";
-        element.childNodes[6].textContent = json.entry.text;
+        element.childNodes[6].textContent = json.entry.name;
       }
     }
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify({entry:{text:text, category:category}}));
+  request.send(JSON.stringify({entry:{name:text, category:category}}));
 }
 
 function removeElement(element) {
@@ -51,8 +51,8 @@ function loadLists(website) {
       json = this.responseText;
       json = JSON.parse(json);
       emptyList();
-      for(let list of json.lists)
-        addlistItem(list.title,false,false, "kategorie").id=list.id;
+      for(let list of json)
+        addlistItem(list.name,false,false, "kategorie").id=list.id;
     }
   };
   request.open("GET", website, true);
@@ -77,7 +77,7 @@ function loadEntries(website) {
       json = JSON.parse(json);
       emptyList();
       for(let entry of json.entries)
-        addlistItem(entry.text,false,true,entry.category).id=entry.id;
+        addlistItem(entry.name,false,true,entry.category).id=entry.id;
     }
   };
   request.open("GET", website, true);
