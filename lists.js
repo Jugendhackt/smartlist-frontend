@@ -9,9 +9,7 @@ function homeUpdate() {
 
 
 
-function removeElement(element) {
-  element.parentNode.removeChild(element);
-}
+
 
 function add() {
   var t = prompt('Please enter the Item');
@@ -33,6 +31,12 @@ function sendRequest(website, text, element, methode, category) {
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify({entry:{text:text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
+}
+
+function removeElement(element) {
+  console.log(listID);
+  sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
+  element.parentNode.removeChild(element);
 }
 
 function loadLists(website) {
