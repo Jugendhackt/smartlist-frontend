@@ -86,8 +86,7 @@ function emptyList(){
 function  cat(li) {
   var p = prompt("Please Enter the category");
   if(p) {
-    debugger;
-    console.log("acepted");
+    li.childNodes[4].textContent = "["+p+"]";
    sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT", p);
   }
 }
