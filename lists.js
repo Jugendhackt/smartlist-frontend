@@ -9,9 +9,7 @@ function homeUpdate() {
 
 
 
-function removeElement(element) {
-  element.parentNode.removeChild(element);
-}
+
 
 function add() {
   var t = prompt('Please enter the Item');
@@ -23,16 +21,24 @@ function sendRequest(website, text, element, methode, category) {
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
-      json = JSON.parse(json);
       if(element !== null) {
+      json = JSON.parse(json);
         element.id = json.id;
         element.textContent = json.entry.text;
-      }
-    }
+          }
+        }
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify({entry:{text:text, category:"Der Himmel ist Blau .ung if bim schlau"}}));
+}
+
+function removeElement(element) {
+  if(element) {
+    console.log(element);
+  sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
+  element.parentNode.removeChild(element);
+}
 }
 
 function loadLists(website) {
@@ -103,7 +109,7 @@ function addlistItem(text, send, isEntry, category) {
 
     li.childNodes[0].addEventListener('click', edit);
     li.childNodes[6].addEventListener('click', edit);
-
+    li.childNodes[2].addEventListener('click', function(){removeElement(li)});
   } else {
     li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
     li.childNodes[2].innerText = text;
@@ -118,6 +124,7 @@ function addlistItem(text, send, isEntry, category) {
   }
   
   ul.appendChild(li);
+
   if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST");
   return li;
 }
