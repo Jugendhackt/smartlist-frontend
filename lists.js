@@ -1,15 +1,11 @@
 var home = true;
-var serverIp = "http://192.168.137.132:3000";
+var serverIp = "http://192.168.21.174:3000";
 var listID = -1;
 
 function homeUpdate() {
   document.getElementById("back").style.visibility = home ? "hidden" : "visible";
   document.getElementsByClassName("additem")[0].style.display = home ? "none" : "";
 }
-
-
-
-
 
 function add() {
   var t = prompt('Please enter the Item');
@@ -24,7 +20,7 @@ function sendRequest(website, text, element, methode, category) {
       if(element !== null) {
         json = JSON.parse(json);
         element.id = json.id;
-        element.childNodes[4].textContent = json.entry.category;
+        element.childNodes[4].textContent = "["+json.entry.category+"]";
         element.childNodes[6].textContent = json.entry.text;
       }
     }
@@ -96,7 +92,7 @@ function addlistItem(text, send, isEntry, category) {
   if(isEntry) {
     li.innerHTML = '<p class="btn">✎</p>&nbsp;<p class="btn">∅</p>&nbsp;<p></p>&nbsp<p></p>';
     li.childNodes[6].innerText = text;
-    li.childNodes[4].innerText=category;
+    li.childNodes[4].innerText = "["+category+"]";
     function edit() {
       console.log(this.parentNode.id);
       var t = prompt('Please enter the Item', li.childNodes[6].textContent);
