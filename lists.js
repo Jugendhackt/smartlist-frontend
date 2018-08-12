@@ -21,12 +21,12 @@ function sendRequest(website, text, element, methode, category) {
   request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json = this.responseText;
-      json = JSON.parse(json);
       if(element !== null) {
+      json = JSON.parse(json);
         element.id = json.id;
         element.textContent = json.entry.text;
-      }
-    }
+          }
+        }
   };
   request.open(methode, website, true);
   request.setRequestHeader("Content-Type", "application/json");
@@ -34,9 +34,11 @@ function sendRequest(website, text, element, methode, category) {
 }
 
 function removeElement(element) {
-  console.log(listID);
+  if(element) {
+    console.log(element);
   sendRequest(serverIp+"/lists/"+listID+"/entries/"+element.id+"/delete", "delete", null,"DELETE");
   element.parentNode.removeChild(element);
+}
 }
 
 function loadLists(website) {
@@ -105,6 +107,7 @@ function addlistItem(text, send, isEntry) {
     }
 
     li.childNodes[0].addEventListener('click', edit);
+    li.childNodes[2].addEventListener('click', function(){removeElement(li)});
     li.childNodes[4].addEventListener('click', edit);
   } else {
     li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
@@ -120,6 +123,7 @@ function addlistItem(text, send, isEntry) {
   }
   
   ul.appendChild(li);
+
   if(send) sendRequest(serverIp+"/lists/"+listID+"/entries/add", text, li, "POST");
   return li;
 }
