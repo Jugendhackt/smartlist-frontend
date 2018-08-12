@@ -83,9 +83,13 @@ function emptyList(){
   while (ul.firstChild)
     ul.removeChild(ul.firstChild);
 }
-function  cat() {
+function  cat(li) {
   var p = prompt("Please Enter the category");
+  if(p) {
+    debugger;
+    console.log("acepted");
    sendRequest(serverIp+"/lists/"+listID+"/entries/"+li.id+"/edit", li.childNodes[6].textContent, null, "PUT", p);
+  }
 }
 
 function addlistItem(text, send, isEntry, category) {
@@ -110,7 +114,7 @@ function addlistItem(text, send, isEntry, category) {
 
     li.childNodes[0].addEventListener('click', edit);
         li.childNodes[2].addEventListener('click', function(){removeElement(li)});
-    li.childNodes[4].addEventListener('click', cat);
+    li.childNodes[4].addEventListener('click', function(){cat(li)});
     li.childNodes[6].addEventListener('click', edit);
   } else {
     li.innerHTML = '<p class="btn">&gt;</p>&nbsp;<p></p>';
